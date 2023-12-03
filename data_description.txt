@@ -1,0 +1,62 @@
+Author of Data: Suzanne Collins
+
+NODES: 24
+EDGES: 23
+
+Qualities of graph:
+- All edges are directed
+- Specifics of edges (different categories):
+    - Targeted, Targeted Indirect, Accidental Indirect, Revenge Targeted, Mercy
+- No self-edges
+- No duplicate edges
+
+Specific Nodes:
+- Marvel
+- Glimmer
+- Cato
+- Clove
+- District 3 Male
+- District 3 Female
+- District 4 Male
+- District 4 Female
+- District 5 Male
+- Foxface
+- Jason
+- District 6 Female
+- District 7 Male
+- District 7 Female
+- District 8 Male
+- District 8 Female
+- District 9 Male
+- District 9 Female
+- District 10 Male
+- District 10 Female
+- Thresh
+- Rue
+- Peeta
+- Katniss
+
+Specific Edges:
+- Marvel → Rue      (Targeted)
+- Marvel → 8M       (Targeted)
+- Marvel → 7F       (Targeted)
+- Glimmer → 10F     (Targeted)
+- Glimmer → 5M      (Targeted)
+- Glimmer → 6F      (Targeted)
+- Glimmer → 8F      (Targeted)
+- Cato → 4M         (Targeted)
+- Cato → Jason      (Targeted)
+- Cato → 9F         (Targeted)
+- Cato → 3M         (Targeted)
+- Cato → Thresh     (Revenge Targeted)
+- Cato → 10M        (Targeted)
+- Clove → 9M        (Targeted)
+- 5M → 3F           (Targeted)
+- Thresh → 7M       (Targeted)
+- Tresh → Clove     (Revenge Targeted)
+- Peeta → Foxface   (Accidental Indirect)
+- Peeta → 8F        (Targeted)
+- Katniss → 4F      (Targeted Indirect)
+- Katniss → Glimmer (Targeted Indirect)
+- Katniss → Marvel  (Revenge Targeted)
+- Katniss → Cato    (Mercy)
