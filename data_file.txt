@@ -1,0 +1,47 @@
+n   1   Marvel
+n   2   Glimmer
+n   3   Cato
+n   4   Clove
+n   5   3M
+n   6   3F
+n   7   4M
+n   8   4F
+n   9   5M
+n   10  Foxface
+n   11  Jason
+n   12  6F
+n   13  7M
+n   14  7F
+n   15  8M
+n   16  8F
+n   17  9M
+n   18  9F
+n   19  10M
+n   20  10F
+n   21  Thresh
+n   22  Rue
+n   23  Peeta
+n   24  Katniss
+e   1   22  Targeted
+e   1   15  Targeted
+e   1   14  Targeted
+e   2   20  Targeted
+e   2   9   Targeted
+e   2   12  Targeted
+e   2   16  Targeted
+e   3   7   Targeted
+e   3   11  Targeted
+e   3   18  Targeted
+e   3   5   Targeted
+e   3   21  Revenge Targeted
+e   3   19  Targeted
+e   4   17  Targeted
+e   9   6   Targeted
+e   21  13  Targeted
+e   21  4   Revenge Targeted
+e   23  10  Accidental Indirect
+e   23  16  Targeted
+e   24  2   Targeted Indirect
+e   24  8   Targeted Indirect
+e   24  1   Revenge Targeted
+e   24  3   Mercy

@@ -53,7 +53,7 @@ Specific Edges:
 - Clove → 9M        (Targeted)
 - 5M → 3F           (Targeted)
 - Thresh → 7M       (Targeted)
-- Tresh → Clove     (Revenge Targeted)
+- Thresh → Clove     (Revenge Targeted)
 - Peeta → Foxface   (Accidental Indirect)
 - Peeta → 8F        (Targeted)
 - Katniss → 4F      (Targeted Indirect)
