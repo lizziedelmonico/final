@@ -43,7 +43,6 @@ Specific Edges:
 - Glimmer → 10F     (Targeted)
 - Glimmer → 5M      (Targeted)
 - Glimmer → 6F      (Targeted)
-- Glimmer → 8F      (Targeted)
 - Cato → 4M         (Targeted)
 - Cato → Jason      (Targeted)
 - Cato → 9F         (Targeted)

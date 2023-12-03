@@ -1,3 +1,4 @@
+p   24  23
 n   1   Marvel
 n   2   Glimmer
 n   3   Cato
@@ -28,7 +29,6 @@ e   1   14  Targeted
 e   2   20  Targeted
 e   2   9   Targeted
 e   2   12  Targeted
-e   2   16  Targeted
 e   3   7   Targeted
 e   3   11  Targeted
 e   3   18  Targeted
