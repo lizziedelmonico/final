@@ -1,13 +1,48 @@
 import com.google.common.graph.*;
 import java.awt.Color;
+import java.io.*;
+import java.util.Scanner;
 
 class Main {
-  public static void main(String[] args) {
+  public static void Test(String[] args) {
     
     // Mutable graphs can be changed after we build them
     MutableGraph<String> graph =
     GraphBuilder.directed().build();
 
+    //System.out.println(graph instanceof MutableGraph);
+    //System.out.println(graph instanceof Graph);
+    //System.out.println(graph instanceof ValueGraph);
+    //System.out.println(graph instanceof Network);
+
+
+    // Here we make changes:
+    graph.addNode("Joe");
+    graph.putEdge("Jordan", "Nick"); // if edge references nodes that don't exist, they get added
+
+    new GraphDisplay(graph);
+    //System.out.println(graph);
+
+    // Can add/remove anytime
+    graph.putEdge("Jordan", "Joe");
+
+    //System.out.println(graph);
+
+    // Immutable ones can't: you have to add everything before you build
+    ImmutableValueGraph<String,Integer> graph2 =
+    ValueGraphBuilder.undirected()
+    .<String,Integer>immutable()
+    .addNode("Ford")
+    .putEdgeValue("Bass", "McConnell", 1)
+    .putEdgeValue("Sabin-Reed", "McConnell", 0)  
+    .putEdgeValue("Sabin-Reed", "Burton", 0)     // edge values not necessarily unique
+    .build();
+
+    //System.out.println(graph2);
+    new GraphDisplay(graph2);
+
+    // Throws error
+    // graph2.removeEdge("Bass", "McConnell");
 
     // Network allows objects on the edges
     MutableNetwork<String,String> network = NetworkBuilder.undirected().build();
@@ -33,6 +68,28 @@ class Main {
     //System.out.println(network instanceof Graph);
     //System.out.println(network instanceof ValueGraph);
     //System.out.println(network instanceof Network);
+  }
+
+  public static void main(String[] args){
+    // Initialize graph
+    MutableGraph<String> graph =
+            GraphBuilder.directed().build();
+
+    // Specify where data is stored
+    Scanner file = FileReader.read("data_file.txt");
+
+    // Read file line by line
+    Integer lineCount = 0;
+    while (file.hasNextLine() && lineCount < 10) {
+      String line = file.nextLine();
+      System.out.println(line);
+      String[] fields = line.split("\\s+");
+      graph.putEdge(fields[0], fields[2]);
+      lineCount += 1;
+    }
+    file.close();
+    System.out.println(graph);
+    new GraphDisplay(graph);
   }
   
 }

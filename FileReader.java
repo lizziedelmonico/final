@@ -1,13 +1,11 @@
 import java.util.Scanner;
-import com.google.common.graph.*;
-import java.awt.Color;
 import java.io.File;
 import java.io.FileNotFoundException;
 
 public class FileReader{
 
-    public static void main(String[] args) {
-    String filename = (args.length > 0) ? args[0] : "data_file.txt";
+    public static Scanner read(String filename) {
+    filename = "data_file.txt";
     Scanner file = null;
     try {
       file = new Scanner(new File(filename));
@@ -35,6 +33,7 @@ public class FileReader{
 
     }
     file.close();
+    return file;
   }
 
 
