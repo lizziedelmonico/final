@@ -34,15 +34,15 @@ e   3   7   Targeted
 e   3   11  Targeted
 e   3   18  Targeted
 e   3   5   Targeted
-e   3   21  Revenge Targeted
+e   3   21  Revenge     Targeted
 e   3   19  Targeted
 e   4   17  Targeted
 e   9   6   Targeted
 e   21  13  Targeted
-e   21  4   Revenge Targeted
-e   23  10  Accidental Indirect
+e   21  4   Revenge     Targeted
+e   23  10  Accidental  Indirect
 e   23  16  Targeted
-e   24  2   Targeted Indirect
-e   24  8   Targeted Indirect
-e   24  1   Revenge Targeted
+e   24  2   Targeted    Indirect
+e   24  8   Targeted    Indirect
+e   24  1   Revenge     Targeted
 e   24  3   Mercy
