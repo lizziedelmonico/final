@@ -7,6 +7,39 @@ import java.util.HashMap;
 
 class Main{
 
+  public static int calculateNodes(){
+    
+    int node_count = 0;
+    Scanner file = ReadFile.read("data_file.txt");
+    
+    while(file.hasNextLine()){
+      String line = file.nextLine();
+      String[] fields = line.split("\\s");
+
+      if(fields[0].equals("n")){
+        node_count++;
+      }
+
+    }
+    return node_count;
+  }
+
+  public static int calculateEdges(){
+    int edge_count = 0;
+    Scanner file = ReadFile.read("data_file.txt");
+    
+    while(file.hasNextLine()){
+      String line = file.nextLine();
+      String[] fields = line.split("\\s");
+
+      if(fields[0].equals("e")){
+        edge_count++;
+      }
+
+    }
+    return edge_count;
+  }
+
   public static void main(String[] args){
     // Initialize graph
     MutableValueGraph<String,String> network = ValueGraphBuilder.directed().build();
@@ -20,7 +53,6 @@ class Main{
     while (file.hasNextLine()) {
       String line = file.nextLine();
       String[] fields = line.split("\\s+");
-      System.out.println(fields[0]);
       if(fields[0].equals("n")){
         network.addNode(fields[2]);
         tributes.put(fields[1], fields[2]);
