@@ -1,10 +1,11 @@
 
-
+import java.util.Set;
 import com.google.common.graph.*;
 import java.awt.Color;
 import java.util.Scanner;
-import java.util.Map.Entry;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 
 class Main{
 
@@ -41,36 +42,20 @@ class Main{
     return edge_count;
   }
 
-  public static int maxDegree(){
+  public static int maxDegree(MutableValueGraph<String,String> network){
     int degree_max = 0;
-    HashMap<String, String> tributes = new HashMap<>();
-    HashMap<String, Integer> kill_count = new HashMap<>();
 
-    Scanner file = ReadFile.read("data_file.txt");
-    MutableGraph<String> degree_network = GraphBuilder.directed().build();
+    Set<Object> nodes = new HashSet(network.nodes()); 
+    Set<Integer> all_kills = new HashSet();
 
-    while(file.hasNextLine()){
-      String line = file.nextLine();
-      String[] fields = line.split("\\s");
-
-      if(fields[0].equals("n")){
-        degree_network.addNode(fields[2]);
-        tributes.put(fields[1], fields[2]);
-      }
-       if(fields[0].equals("e")){
-        String person1 = fields[1];
-        String person2 = fields[2];
-        degree_network.putEdge(tributes.get(person1), tributes.get(person2));
-        kill_count.put(person1, +1);
-       }
+    for(Object node : nodes){
+      int kill_count = network.outDegree((String)node);
+      all_kills.add(kill_count);
     }
-    for(HashMap.Entry<String, Integer> entry : kill_count.entrySet()){
-      if(kill_count.get(entry).compareTo(degree_max) > 0){
-        degree_max = kill_count.get(entry);
-      }
-    }
+
+    degree_max = Collections.max(all_kills);
+
     return degree_max;
-
 
   }
 
@@ -116,7 +101,7 @@ class Main{
       }}
       file.close();
      System.out.println(network);
-     System.out.println(maxDegree());
+     System.out.println(maxDegree(network));
      GraphDisplay d3 = new GraphDisplay(network);
      d3.setNodeColors(Color.PINK);
      d3.setEdgeColors(Color.BLACK);
