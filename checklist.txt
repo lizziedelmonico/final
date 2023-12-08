@@ -6,9 +6,9 @@ YES 2 pts: Journal includes at least one entry per phase and describes the desig
 
 YES 2 pts: The program reads the data in and stores them in the form of a graph
 
-_____ 2 pts: Graph is used to compute new information, including something significant about node connectivity.
+YES 2 pts: Graph is used to compute new information, including something significant about node connectivity.
 
-_____ 2 pts: The program's output communicates the results in a clear and unambiguous manner
+YES 2 pts: The program's output communicates the results in a clear and unambiguous manner
 
 YES 2 pts: The program is designed in a general way so that it would work for any dataset that follows the same format and could solve any problem of the category that your program is solving (e.g., nodes are not hardcoded) 
 

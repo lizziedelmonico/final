@@ -59,6 +59,32 @@ class Main{
 
   }
 
+  public static float averageDegree(MutableValueGraph<String,String> network){
+    float degree_avrg;
+
+    Set<Object> nodes = new HashSet(network.nodes());
+    Set<Integer> all_kills = new HashSet();
+
+    for(Object node : nodes){
+      int kill_count = network.outDegree((String) node);
+      all_kills.add(kill_count);
+    }
+
+    float sum = 0;
+    
+    for(float i : all_kills){
+      sum += 1;
+    }
+    float num_nodes = network.nodes().size();
+    degree_avrg = sum/num_nodes;
+    
+    return degree_avrg;
+  }
+
+  public static HashMap<Integer, String> killRankings(MutableValueGraph<String,String> network){
+    
+  }
+
   public static void main(String[] args){
     // Initialize graph
     MutableValueGraph<String,String> network = ValueGraphBuilder.directed().build();
@@ -102,6 +128,7 @@ class Main{
       file.close();
      System.out.println(network);
      System.out.println(maxDegree(network));
+     System.out.println(averageDegree(network));
      GraphDisplay d3 = new GraphDisplay(network);
      d3.setNodeColors(Color.PINK);
      d3.setEdgeColors(Color.BLACK);
