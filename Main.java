@@ -1,4 +1,3 @@
-
 import java.util.Set;
 import com.google.common.graph.*;
 import java.awt.Color;
@@ -9,6 +8,10 @@ import java.util.HashSet;
 
 class Main{
 
+  /**
+   * Calculates the number of nodes in the graph from the file provided
+   * @return  The number of nodes in the graph
+   */
   public static int calculateNodes(){
     
     int node_count = 0;
@@ -26,6 +29,10 @@ class Main{
     return node_count;
   }
 
+  /**
+   * Calculates the number of edges in the graph from the file provided
+   * @return  The number of edges in the graph
+   */
   public static int calculateEdges(){
     int edge_count = 0;
     Scanner file = ReadFile.read("data_file.txt");
@@ -42,6 +49,11 @@ class Main{
     return edge_count;
   }
 
+  /**
+   * Calculates the maximum outward degree in the graph 
+   * @param network   The graph created using the file provided
+   * @return  The maximum outward degree in the graph
+   */
   public static int maxDegree(MutableValueGraph<String,String> network){
     int degree_max = 0;
 
@@ -59,6 +71,11 @@ class Main{
 
   }
 
+  /**
+   * Calculates the average outward degree in the file (as a float to be more precise)
+   * @param network   The graph created using the file provided
+   * @return  The averge outward degree in the file 
+   */
   public static float averageDegree(MutableValueGraph<String,String> network){
     float degree_avrg;
 
@@ -81,10 +98,32 @@ class Main{
     return degree_avrg;
   }
 
-  public static HashMap<Integer, String> killRankings(MutableValueGraph<String,String> network){
-    
+  /**
+   * Finds the outward degree (aka the number of kills) of a specific node (tribute) as specified by the user
+   * @param network   The graph created using the file provided
+   * @return  The outward degree of the specified node
+   */
+  public static int degree(MutableValueGraph<String,String> network){
+
+    Scanner user = new Scanner(System.in);
+    System.out.println("Which tribute would you like to assess?");
+    String input = user.nextLine();
+
+    int degree = network.outDegree(input);
+  
+    return degree;
   }
 
+  // public HashMap<Integer, String> killRankings(MutableValueGraph<String,String> network, HashMap<String,String> tributes){
+    
+      
+  // }
+
+  
+  /**
+   * Reads the file, creates the graph network, and allows the user to choose their next moves
+   * @param args  The arguments provided
+   */
   public static void main(String[] args){
     // Initialize graph
     MutableValueGraph<String,String> network = ValueGraphBuilder.directed().build();
@@ -94,7 +133,6 @@ class Main{
     // Specify where data is stored
     Scanner file = ReadFile.read("data_file.txt");
 
-    // Read file line by lin
     while (file.hasNextLine()) {
       String line = file.nextLine();
       String[] fields = line.split("\\s+");
@@ -129,6 +167,7 @@ class Main{
      System.out.println(network);
      System.out.println(maxDegree(network));
      System.out.println(averageDegree(network));
+     System.out.println(degree(network));
      GraphDisplay d3 = new GraphDisplay(network);
      d3.setNodeColors(Color.PINK);
      d3.setEdgeColors(Color.BLACK);

@@ -1,6 +1,9 @@
 {
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
-        "/Users/lizziedelmonico1/Downloads/com.google.guava_32.1.2.jre.jar"
+        "/Users/lizziedelmonico1/Downloads/com.google.guava_32.1.2.jre.jar",
+        "/Users/lizziedelmonico1/210 final/final/**/*.jar",
+        "/Users/lizziedelmonico1/Downloads/commons-lang3-3.14.0-src/**/*.jar",
+        "/Users/lizziedelmonico1/Downloads/javatuples-1.2.jar"
     ]
 }
