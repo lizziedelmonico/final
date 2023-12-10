@@ -8,11 +8,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 
 public class UserDisplay {
     
@@ -31,6 +26,7 @@ public class UserDisplay {
     JPanel choice1Panel;
     JPanel choice2Panel;
     JButton choice2;
+    ActionListener buttonListener;
 
     public static void main(String[] args){
         new UserDisplay();
@@ -91,6 +87,19 @@ public class UserDisplay {
 
     }
 
+    public class buttonListener implements ActionListener {
+        public void actionPerformed(ActionEvent e){
+            Object o = e.getSource();
+            if(o == choice1){
+                TributeScores.print();
+            }
+            if(o == choice2){
+                System.out.println("lol");
+            }
+        }
+    }
+
+
     public void createGameScreen(){
 
         //makes the title screen's panels invisible (without this the title screen will block the game screen so you can't see it)
@@ -120,18 +129,35 @@ public class UserDisplay {
         //sets the color of the words on the button
         choice1.setForeground(Color.black);
         choice1.setFont(normalFont);
-        choice1.addActionListener(titleScreenHandler);
+
 
         choice1Panel.add(choice1);
+        choice1.addActionListener(buttonListener);
        
+        choice2Panel = new JPanel();
+        choice2Panel.setBounds(800,400,500,100);
+        choice2Panel.setBackground(Color.WHITE);
+
+        choice2 = new JButton("BET ON A TRIBUTE");
+        choice2.setBackground(Color.white);
+        choice2.setForeground(Color.black);
+        choice2.setFont(normalFont);
+
+
+        choice2Panel.add(choice2);
+
         //container is like a base where you can add a bunch of different things onto it (buttons, panels, text, etc.) 
         container.add(mainTextPanel);
         container.add(choice1Panel);
+        container.add(choice2Panel);
+        choice2.addActionListener(buttonListener);
 
 
         
 
     }
+
+
 
     public class TitleScreenHandler implements ActionListener{
     
