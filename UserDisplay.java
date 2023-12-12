@@ -66,6 +66,22 @@ public class UserDisplay {
     JPanel choice4Panel;
     JButton choice4;
     HomeScreenHandler homeScreenHandler = new HomeScreenHandler();
+    JPanel choice5Panel;
+    JButton choice5;
+    JFrame connectFrame;
+    JPanel connectPanel;
+    JLabel connect;
+    JTextArea person1;
+    JTextArea person2;
+    JPanel enterPanel2;
+    JButton enterButton2;
+    TributeConnectionScreenHandler tributeConnectionScreenHandler = new TributeConnectionScreenHandler();
+    ConnectionResultsScreenHandler connectionResultsScreenHandler = new ConnectionResultsScreenHandler();
+    JFrame connectResultFrame;
+    JPanel connectResultPanel;
+    JLabel connectResultLabel;
+    JPanel returnPanel2;
+    JButton returnButton2;
     
     
 
@@ -213,16 +229,26 @@ public class UserDisplay {
         choice3Panel.add(choice3);
 
         choice4Panel = new JPanel();
-        choice4Panel.setBounds(800,600,500,100);
+        choice4Panel.setBounds(800,600,600,100);
         choice4Panel.setBackground(Color.WHITE);
-        choice4 = new JButton("START OVER");
+        choice4 = new JButton("CHECK CONNECTION BETWEEN TRIBUTES");
         choice4.setBackground(Color.WHITE);
         choice4.setForeground(Color.black);
         choice4.setFont(normalFont);
 
-        choice4.addActionListener(homeScreenHandler);
+        choice4.addActionListener(tributeConnectionScreenHandler);
         choice4Panel.add(choice4);
         
+        choice5Panel = new JPanel();
+        choice5Panel.setBounds(450,800,500,100);
+        choice5Panel.setBackground(Color.WHITE);
+        choice5 = new JButton("START OVER");
+        choice5.setBackground(Color.WHITE);
+        choice5.setForeground(Color.BLACK);
+        choice5.setFont(normalFont);
+
+        choice5.addActionListener(homeScreenHandler);
+        choice5Panel.add(choice5);
 
 
         //container is like a base where you can add a bunch of different things onto it (buttons, panels, text, etc.) 
@@ -231,8 +257,19 @@ public class UserDisplay {
         container.add(choice2Panel);
         container.add(choice3Panel);
         container.add(choice4Panel);
+        container.add(choice5Panel);
 
     }
+
+    public class TributeConnectionScreenHandler implements ActionListener{
+       
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            connections();
+        } 
+
+    }
+
 
     public class HomeScreenHandler implements ActionListener{
 
@@ -279,6 +316,131 @@ public class UserDisplay {
         }
     }
 
+    public class ConnectionResultsScreenHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e){
+            connectionResults();
+        }
+    }
+
+    public void connections(){
+        titlePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        mainTextPanel.setVisible(false);
+        choice1Panel.setVisible(false);
+        choice2Panel.setVisible(false);
+        choice3Panel.setVisible(false);
+        choice4Panel.setVisible(false);
+        choice5Panel.setVisible(false);
+
+        connectFrame = new JFrame();
+        connectFrame.setSize(2000,2000);
+        connectFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        connectFrame.getContentPane().setBackground(Color.WHITE);
+        connectFrame.setLayout(null);
+        connectFrame.setVisible(true);
+
+        connectPanel = new JPanel();
+        connectPanel.setBounds(250,200,1000,300);
+        connectPanel.setBackground(Color.WHITE);
+        connectPanel.setForeground(Color.BLACK);
+        connect = new JLabel("Which tributes would you like to assess?");
+        connect.setForeground(Color.BLACK);
+        connect.setFont(middleFont);
+        connectPanel.add(connect);
+
+        person1 = new JTextArea();
+        person1.setBounds(300,400,300,50);
+        person1.setBackground(Color.PINK);
+        person1.setForeground(Color.BLACK);
+        person1.setFont(normalFont);
+        connectFrame.add(person1);
+
+        person2 = new JTextArea();
+        person2.setBounds(800,400,300,50);
+        person2.setBackground(Color.PINK);
+        person2.setForeground(Color.BLACK);
+        person2.setFont(normalFont);
+        connectFrame.add(person2);
+
+        enterPanel2 = new JPanel();
+        enterPanel2.setBounds(450,500,500,100);
+        enterPanel2.setBackground(Color.WHITE);
+        enterPanel2.setForeground(Color.BLACK);
+        enterButton2 = new JButton("ENTER");
+        enterButton2.setBackground(Color.WHITE);
+        enterButton2.setForeground(Color.BLACK);
+        enterButton2.setFont(normalFont);
+        enterPanel2.add(enterButton2);
+        enterButton2.addActionListener(connectionResultsScreenHandler);
+
+        exitPanel = new JPanel();
+        exitPanel.setBounds(450,700,500,100);
+        exitPanel.setBackground(Color.WHITE);
+        exitPanel.setForeground(Color.BLACK);
+        exitButton = new JButton("EXIT");
+        exitButton.setBackground(Color.WHITE);
+        exitButton.setForeground(Color.BLACK);
+        exitButton.setFont(normalFont);
+        exitButton.addActionListener(titleScreenHandler);
+        exitPanel.add(exitButton);
+
+
+        connectFrame.add(enterPanel2);
+        connectFrame.add(connectPanel);
+        connectFrame.add(exitPanel);
+
+
+    }
+
+    public void connectionResults(){
+        connectPanel.setVisible(false);
+        person1.setVisible(false);
+        person2.setVisible(false);
+        enterPanel2.setVisible(false);
+
+        connectResultFrame = new JFrame();
+        connectResultFrame.setSize(2000,2000);
+        connectResultFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        connectResultFrame.getContentPane().setBackground(Color.WHITE);
+        connectResultFrame.setLayout(null);
+        connectResultFrame.setVisible(true);
+
+        connectResultPanel = new JPanel();
+        connectResultPanel.setBounds(200,300,1000,300);
+        connectResultPanel.setBackground(Color.WHITE);
+
+        String name1 = person1.getText();
+        String name2 = person2.getText();
+        System.out.println(name1);
+        System.out.println(name2);
+        Boolean connected = Main.tributesConnected(name1, name2);
+        if(connected == true){
+            connectResultLabel = new JLabel(name1 + " killed " + name2);
+        } else{
+            connectResultLabel = new JLabel(name1 + " did not kill " + name2);
+        }
+        connectResultLabel.setBackground(Color.WHITE);
+        connectResultLabel.setForeground(Color.BLACK);
+        connectResultLabel.setFont(middleFont);
+        connectResultPanel.add(connectResultLabel);
+
+        connectResultFrame.add(connectResultPanel);
+
+        returnPanel2 = new JPanel();
+        returnPanel2.setBounds(450,600,500,100);
+        returnPanel2.setBackground(Color.WHITE);
+        returnPanel2.setForeground(Color.BLACK);
+        returnButton2 = new JButton("RETURN");
+        returnButton2.setBackground(Color.WHITE);
+        returnButton2.setForeground(Color.BLACK);
+        returnButton2.setFont(normalFont);
+        returnButton2.addActionListener(tributeConnectionScreenHandler);
+        returnPanel2.add(returnButton2);
+        connectResultFrame.add(returnPanel2);
+
+    }
+
     public void gameResults(){
         //makes the title screen's panels invisible (without this the title screen will block the game screen so you can't see it)
         titlePanel.setVisible(false);
@@ -287,6 +449,8 @@ public class UserDisplay {
         choice1Panel.setVisible(false);
         choice2Panel.setVisible(false);
         choice3Panel.setVisible(false);
+        choice4Panel.setVisible(false);
+        choice5Panel.setVisible(false);
 
         gameFrame = new JFrame();
         // sets the size of the visual window (the integers represent number of pixels for width and height)
@@ -392,6 +556,8 @@ public class UserDisplay {
         choice1Panel.setVisible(false);
         choice2Panel.setVisible(false);
         choice3Panel.setVisible(false);
+        choice4Panel.setVisible(false);
+        choice5Panel.setVisible(false);
 
         tributeFrame = new JFrame();
         // sets the size of the visual window (the integers represent number of pixels for width and height)
@@ -451,6 +617,8 @@ public class UserDisplay {
         choice1Panel.setVisible(false);
         choice2Panel.setVisible(false);
         choice3Panel.setVisible(false);
+        choice4Panel.setVisible(false);
+        choice5Panel.setVisible(false);
 
         killFrame = new JFrame();
         // sets the size of the visual window (the integers represent number of pixels for width and height)

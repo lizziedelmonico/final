@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 
+
 class Main{
 
 
@@ -112,6 +113,20 @@ class Main{
   
     System.out.println(degree);
     return degree;
+  }
+
+  public static boolean tributesConnected(String name1,String name2){
+  
+    MutableValueGraph<String,String> network = returnGraph();
+
+    if(network.hasEdgeConnecting(name1, name2)){
+      return true;
+    }
+    else{
+      return false;
+    }
+
+
   }
 
   
