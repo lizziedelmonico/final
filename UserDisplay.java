@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,6 +19,7 @@ public class UserDisplay {
     JPanel titlePanel;
     JLabel titleLabel;
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 60);
+    Font middleFont = new Font("Times New Roman", Font.PLAIN, 45);
     JPanel startButtonPanel;
     JButton startButton;
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
@@ -41,6 +44,24 @@ public class UserDisplay {
     JFrame killFrame;
     JPanel killPanel;
     JLabel killLabel;
+    JTextArea nameArea;
+    KillScreenHandler killScreenHandler = new KillScreenHandler();
+    JButton enter;
+    JPanel enterPanel;
+    ChosenTributeScreenHandler ctScreenHandler = new ChosenTributeScreenHandler();
+    JPanel typePanel;
+    JPanel resultPanel;
+    JLabel resultLabel;
+    JFrame resultFrame;
+    JPanel returnPanel;
+    JButton returnButton;
+    ResultsScreenHandler resultsScreenHandler = new ResultsScreenHandler();
+    JFrame gameFrame;
+    ImageIcon image2;
+    JLabel imageLab2;
+    JPanel gamePanel;
+    
+    
 
 
     public static void main(String[] args){
@@ -158,7 +179,7 @@ public class UserDisplay {
         choice2.setForeground(Color.black);
         choice2.setFont(normalFont);
 
-        choice2.addActionListener(gameScreenHandler);
+        choice2.addActionListener(killScreenHandler);
         choice2Panel.add(choice2);
 
         choice3Panel = new JPanel();
@@ -169,7 +190,7 @@ public class UserDisplay {
         choice2.setForeground(Color.black);
         choice3.setFont(normalFont);
 
-        choice3.addActionListener(gameScreenHandler);
+        choice3.addActionListener(resultsScreenHandler);
         choice3Panel.add(choice3);
 
 
@@ -181,10 +202,10 @@ public class UserDisplay {
 
     }
 
-    public class killScreenHandler implements ActionListener{
+    public class KillScreenHandler implements ActionListener{
 
         public void actionPerformed(ActionEvent event){
-            Main.degree(null);
+            killCount();
         }
     }
 
@@ -202,6 +223,126 @@ public class UserDisplay {
         }
     }
 
+    public class ChosenTributeScreenHandler implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            userResults();
+        }
+    }
+
+    public class ResultsScreenHandler implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e){
+            gameResults();
+        }
+    }
+
+    public void gameResults(){
+        //makes the title screen's panels invisible (without this the title screen will block the game screen so you can't see it)
+        titlePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        mainTextPanel.setVisible(false);
+        choice1Panel.setVisible(false);
+        choice2Panel.setVisible(false);
+        choice3Panel.setVisible(false);
+
+        gameFrame = new JFrame();
+        // sets the size of the visual window (the integers represent number of pixels for width and height)
+        gameFrame.setSize(2000,2000);
+        // creates an exit button to close the window (like the "X" button on google chrome)
+        gameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //sets the color of the background (already part of the JFrame package but adds the .Color for you)
+        gameFrame.getContentPane().setBackground(Color.WHITE);
+
+        //JFrame has a default layout and the null allows you to customize the look of your window
+        gameFrame.setLayout(null);
+        //makes the window visible to you (just creating it isn't enough it won't be visible without adding this)
+        gameFrame.setVisible(true);
+
+        gamePanel = new JPanel();
+        gamePanel.setBounds(50, 50, 1250, 900);
+        gamePanel.setBackground(Color.WHITE);
+        ImageIcon image2 = new ImageIcon(getClass().getResource("image2.png"));
+        JLabel imageLab2 = new JLabel(image2);
+        gamePanel.add(imageLab2);
+
+        container = gameFrame.getContentPane();
+        exitPanel = new JPanel();
+        exitPanel.setBounds(450, 700, 500, 100);
+        exitPanel.setBackground(Color.WHITE);
+
+        //initializes button (INCLUDES STRING/TEXT)
+        exitButton = new JButton("EXIT");
+        //sets the color of the button
+        exitButton.setBackground(Color.white);
+        //sets the color of the words on the button
+        exitButton.setForeground(Color.black);
+        exitButton.setFont(normalFont);
+
+
+        exitPanel.add(exitButton);
+        exitButton.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createGameScreen();
+                throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+            }
+
+        });
+
+    
+        container.add(gamePanel);
+        container.add(exitPanel);
+
+    }
+
+
+    public void userResults(){
+        killPanel.setVisible(false);
+        enterPanel.setVisible(false);
+        exitPanel.setVisible(false);
+        resultFrame = new JFrame();
+        resultFrame.setSize(2000,2000);
+        resultFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        resultFrame.getContentPane().setBackground(Color.WHITE);
+        resultFrame.setLayout(null);
+        resultFrame.setVisible(true);
+        String name = nameArea.getText();
+        System.out.println(name);
+        Integer indvidual = Main.degree(name);
+        resultPanel = new JPanel();
+        resultPanel.setBounds(200,300,1000,500);
+        resultPanel.setBackground(Color.WHITE);
+        resultLabel = new JLabel("Here is the number of kills your tribute has: " + indvidual);
+        resultLabel.setFont(middleFont);
+        resultPanel.setVisible(true);
+        resultLabel.setVisible(true);
+        returnPanel = new JPanel();
+        returnPanel.setBounds(450,700,500,100);
+        returnPanel.setBackground(Color.WHITE);
+        returnButton = new JButton("RETURN");
+        returnButton.setBackground(Color.WHITE);
+        returnButton.setFont(normalFont);
+        returnPanel.setVisible(true);
+        returnButton.setVisible(true);
+        returnButton.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                killCount();
+                throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+            }
+
+        });
+        returnPanel.add(returnButton);
+        resultPanel.add(resultLabel);
+        resultFrame.add(resultPanel);
+        resultFrame.add(returnPanel);
+    }
+
     public void tributeScores() {
         //makes the title screen's panels invisible (without this the title screen will block the game screen so you can't see it)
         titlePanel.setVisible(false);
@@ -209,6 +350,7 @@ public class UserDisplay {
         mainTextPanel.setVisible(false);
         choice1Panel.setVisible(false);
         choice2Panel.setVisible(false);
+        choice3Panel.setVisible(false);
 
         tributeFrame = new JFrame();
         // sets the size of the visual window (the integers represent number of pixels for width and height)
@@ -267,22 +409,82 @@ public class UserDisplay {
         mainTextPanel.setVisible(false);
         choice1Panel.setVisible(false);
         choice2Panel.setVisible(false);
-        tributePanel.setVisible(false);
-        exitPanel.setVisible(true);
+        choice3Panel.setVisible(false);
 
         killFrame = new JFrame();
+        // sets the size of the visual window (the integers represent number of pixels for width and height)
         killFrame.setSize(2000,2000);
+        // creates an exit button to close the window (like the "X" button on google chrome)
         killFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //sets the color of the background (already part of the JFrame package but adds the .Color for you)
         killFrame.getContentPane().setBackground(Color.WHITE);
 
+        //JFrame has a default layout and the null allows you to customize the look of your window
         killFrame.setLayout(null);
+        //makes the window visible to you (just creating it isn't enough it won't be visible without adding this)
         killFrame.setVisible(true);
 
         killPanel = new JPanel();
-        killPanel.setBounds(50, 50, 1250, 900);
+        killPanel.setBounds(400,100, 700, 500);
         killPanel.setBackground(Color.WHITE);
+        JLabel killLabel = new JLabel("Which tribute would you like to assess?");
+        killLabel.setBackground(Color.WHITE);
+        killLabel.setForeground(Color.BLACK);
+        killLabel.setFont(normalFont);
+        killPanel.add(killLabel);
 
-        killLabel = new JLabel();
+        killFrame.add(killPanel);
+
+        container = killFrame.getContentPane();
+        exitPanel = new JPanel();
+        exitPanel.setBounds(450, 500, 500, 100);
+        exitPanel.setBackground(Color.WHITE);
+
+        //initializes button (INCLUDES STRING/TEXT)
+        exitButton = new JButton("EXIT");
+        //sets the color of the button
+        exitButton.setBackground(Color.WHITE);
+        //sets the color of the words on the button
+        exitButton.setForeground(Color.BLACK);
+        exitButton.setFont(normalFont);
+
+
+        exitPanel.add(exitButton);
+        killFrame.add(exitPanel);
+        exitButton.addActionListener(new ActionListener(){
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                createGameScreen();
+                throw new UnsupportedOperationException("Unimplemented method 'actionPerformed'");
+            }
+
+        });
+
+        nameArea = new JTextArea();
+        nameArea.setBounds(550,300,200,100);
+        nameArea.setBackground(Color.PINK);
+        nameArea.setForeground(Color.BLACK);
+        nameArea.setFont(normalFont);
+      
+        enterPanel = new JPanel();
+        enterPanel.setBounds(700, 300, 500, 100);
+        enterPanel.setBackground(Color.WHITE);
+ 
+ 
+        //initializes button (INCLUDES STRING/TEXT)
+        enter = new JButton("ENTER");
+        //sets the color of the button
+        enter.setBackground(Color.white);
+        //sets the color of the words on the button
+        enter.setForeground(Color.black);
+        enter.setFont(normalFont);
+        enterPanel.add(enter);
+        enter.addActionListener(ctScreenHandler);
+
+        killFrame.add(nameArea);
+        killFrame.add(enterPanel);
+        
 
     }
 
