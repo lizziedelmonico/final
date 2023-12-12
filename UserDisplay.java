@@ -11,6 +11,9 @@ import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 
 public class UserDisplay {
     
@@ -18,7 +21,7 @@ public class UserDisplay {
     Container container;
     JPanel titlePanel;
     JLabel titleLabel;
-    Font titleFont = new Font("Times New Roman", Font.PLAIN, 60);
+    Font titleFont = new Font("Times New Roman", Font.BOLD, 60);
     Font middleFont = new Font("Times New Roman", Font.PLAIN, 45);
     JPanel startButtonPanel;
     JButton startButton;
@@ -60,6 +63,9 @@ public class UserDisplay {
     ImageIcon image2;
     JLabel imageLab2;
     JPanel gamePanel;
+    JPanel choice4Panel;
+    JButton choice4;
+    HomeScreenHandler homeScreenHandler = new HomeScreenHandler();
     
     
 
@@ -77,6 +83,14 @@ public class UserDisplay {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //sets the color of the background (already part of the JFrame package but adds the .Color for you)
         window.getContentPane().setBackground(Color.WHITE);
+        Image homeImage = Toolkit.getDefaultToolkit().getImage("titlepic.png");;
+        window.setContentPane(new JPanel() {
+            @Override
+            public void paintComponent(Graphics g) {
+               super.paintComponent(g);
+               g.drawImage(homeImage, 0, 0, null);
+            }
+         });
         //JFrame has a default layout and the null allows you to customize the look of your window
         window.setLayout(null);
         //makes the window visible to you (just creating it isn't enough it won't be visible without adding this)
@@ -90,6 +104,7 @@ public class UserDisplay {
         //sets the color of the panel (behind the words)
         titlePanel.setBackground(Color.WHITE);
 
+
         //initializes the words of the title (INCLUDES THE STRING OF TEXT)
         titleLabel = new JLabel("Welcome to the 74th Annual Hunger Games");
         //sets the color of the words
@@ -101,8 +116,12 @@ public class UserDisplay {
         titlePanel.add(titleLabel);
 
 
+        window.add(titlePanel);
+
+
+
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(600, 350, 200, 100);
+        startButtonPanel.setBounds(600, 600, 200, 50);
         startButtonPanel.setBackground(Color.WHITE);
 
         //initializes button (INCLUDES STRING/TEXT)
@@ -183,7 +202,7 @@ public class UserDisplay {
         choice2Panel.add(choice2);
 
         choice3Panel = new JPanel();
-        choice3Panel.setBounds(400,600,500,100);
+        choice3Panel.setBounds(50,600,500,100);
         choice3Panel.setBackground(Color.WHITE);
         choice3 = new JButton("VIEW GAME RESULTS");
         choice3.setBackground(Color.white);
@@ -193,13 +212,34 @@ public class UserDisplay {
         choice3.addActionListener(resultsScreenHandler);
         choice3Panel.add(choice3);
 
+        choice4Panel = new JPanel();
+        choice4Panel.setBounds(800,600,500,100);
+        choice4Panel.setBackground(Color.WHITE);
+        choice4 = new JButton("START OVER");
+        choice4.setBackground(Color.WHITE);
+        choice4.setForeground(Color.black);
+        choice4.setFont(normalFont);
+
+        choice4.addActionListener(homeScreenHandler);
+        choice4Panel.add(choice4);
+        
+
 
         //container is like a base where you can add a bunch of different things onto it (buttons, panels, text, etc.) 
         container.add(mainTextPanel);
         container.add(choice1Panel);
         container.add(choice2Panel);
         container.add(choice3Panel);
+        container.add(choice4Panel);
 
+    }
+
+    public class HomeScreenHandler implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            main(null);
+        }
     }
 
     public class KillScreenHandler implements ActionListener{
@@ -262,15 +302,15 @@ public class UserDisplay {
         gameFrame.setVisible(true);
 
         gamePanel = new JPanel();
-        gamePanel.setBounds(50, 50, 1250, 900);
+        gamePanel.setBounds(0, 0, 1500, 900);
         gamePanel.setBackground(Color.WHITE);
-        ImageIcon image2 = new ImageIcon(getClass().getResource("image2.png"));
+        ImageIcon image2 = new ImageIcon(getClass().getResource("graphpic.png"));
         JLabel imageLab2 = new JLabel(image2);
         gamePanel.add(imageLab2);
 
         container = gameFrame.getContentPane();
         exitPanel = new JPanel();
-        exitPanel.setBounds(450, 700, 500, 100);
+        exitPanel.setBounds(475, 700, 500, 100);
         exitPanel.setBackground(Color.WHITE);
 
         //initializes button (INCLUDES STRING/TEXT)
@@ -292,7 +332,8 @@ public class UserDisplay {
             }
 
         });
-
+        gameFrame.add(gamePanel);
+        gameFrame.add(exitPanel);
     
         container.add(gamePanel);
         container.add(exitPanel);
