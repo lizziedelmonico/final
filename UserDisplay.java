@@ -3,11 +3,9 @@ import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,48 +14,85 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 public class UserDisplay {
-    
+    /* JFrame for the title screen */
     JFrame window;
+    /* Container to hold the contents of the screens */
     Container container;
+    /* The panel to hold the title */
     JPanel titlePanel;
+    /* The title label */
     JLabel titleLabel;
+    /* The details of the title font */
     Font titleFont = new Font("Times New Roman", Font.BOLD, 60);
+    /* The details of a medium-sized font */
     Font middleFont = new Font("Times New Roman", Font.PLAIN, 45);
+    /* The panel that will contain the start button */
     JPanel startButtonPanel;
+    /* The start button on the title screen */
     JButton startButton;
+    /* The details of the smaller-sized font */
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
+    /* The panel at the top of the options screen */
     JPanel mainTextPanel;
+    /* The label of the options screen that asks the user what they want to do */
     JLabel mainTextLabel;
+    /* The Action Listener that takes the user to the options screen */
     TitleScreenHandler titleScreenHandler = new TitleScreenHandler();
+    /* The first option that the user can choose from (viewing tribute scores) */
     JButton choice1;
+    /* The panel for the first option */
     JPanel choice1Panel;
+    /* The panel for the second option the user is given */
     JPanel choice2Panel;
+    /* The second option that the user can choose from (assessing a specific tribute) */
     JButton choice2;
+    /* The Action Listener that takes the user to the screen containing the tribute training scores */
     GameScreenHandler gameScreenHandler = new GameScreenHandler();
+    /* The JFrame for the main option screen */
     JFrame mainFrame;
+    /* The JFrame for the tribute score screen */
     JFrame tributeFrame;
+    /* The exit button */
     JButton exitButton;
+    /* The panel for the exit button */
     JPanel exitPanel;
-    JLabel displayField;
+    /* The image containing the tributes' training scores */
     ImageIcon image;
+    /* The panel for the user's third choice (viewing the graph) */
     JPanel choice3Panel;
+    /* The button containing the user's third choice */
     JButton choice3;
+    /* The panel for the tributes' training scores */
     JPanel tributePanel;
+    /* The JLabel for the tributes' trinaing scores image */
     JLabel imageLab;
+    /* The JFame for the assessment of individual tributes' kill counts */
     JFrame killFrame;
+    /* The JPanel to ask the user which tribute they would like to assess */
     JPanel killPanel;
+    /* The JLabel asking the user which tribute to assess */
     JLabel killLabel;
+    /* The text area where the user can type in the name of the tribute to assess */
     JTextArea nameArea;
+    /* Takes the user to the kill count method */
     KillScreenHandler killScreenHandler = new KillScreenHandler();
+    /* The button that the user presses after typing in the tribute's name */
     JButton enter;
+    /* The panel for the enter button */
     JPanel enterPanel;
+    /* The Action Listener that takes the user to the results of their chosen tribute */
     ChosenTributeScreenHandler ctScreenHandler = new ChosenTributeScreenHandler();
-    JPanel typePanel;
+    /* The JPanel for the results of the chosen tribute */
     JPanel resultPanel;
+    /* The JLabel stating the results of the chosen tribute */
     JLabel resultLabel;
+    /* The JFrame of the user's chosen tribute's results */
     JFrame resultFrame;
+    /* The JPanel for the return button on the kill count result screen */
     JPanel returnPanel;
+    /* The return button that takes the user back to the screen to type in a tribute's name */
     JButton returnButton;
+    /* The Action Listener that takes the user to the graph of the game results */
     ResultsScreenHandler resultsScreenHandler = new ResultsScreenHandler();
     JFrame gameFrame;
     ImageIcon image2;
