@@ -6,3 +6,5 @@ PHASE 0: (COMPLETED 12/3)
 PHASE 1: (COMPLETED 12/8)
     This portion of the project was a little frustrating at times, but eventually worked out perfectly! There was a brief file reading issue but as always the problem stemmed from a tiny error. The hardest part of this section of the project was changing the node values from the numbers I assigned each character to their names. In the end, everything worked out and I now have a pretty little graph! :D
 
+PHASES 2 & 3: (COMPLETED 12/12)
+    I honestly couldn't be happier with how this project ended up. Not only did I get to make a successful graph but I also got to analyze it in a fun and creative way. Additionally, I got to play around with GUI for the first time since this past summer which was very exciting. Having a nice and clean user interface made the different methods analyzing the graph make more sense with my theme. I wasn't expecting to love graphics this much but now I can't wait to learn more about it!
