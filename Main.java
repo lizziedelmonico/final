@@ -115,6 +115,12 @@ class Main{
     return degree;
   }
 
+  /**
+   * Finds the connection between two tributes (whether or not the first person killed the second)
+   * @param name1   The name of the first tribute 
+   * @param name2   The name of the second tribute
+   * @return    Whether or not the first tribute killed the second name
+   */
   public static boolean tributesConnected(String name1,String name2){
   
     MutableValueGraph<String,String> network = returnGraph();
@@ -129,7 +135,10 @@ class Main{
 
   }
 
-  
+  /**
+   * Returns the graph created from the file
+   * @return  The graph created from the given file
+   */
   public static MutableValueGraph<String,String> returnGraph(){
     MutableValueGraph<String,String> network = ValueGraphBuilder.directed().build();
     HashMap<String, String> tributes = new HashMap<>();

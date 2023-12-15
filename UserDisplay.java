@@ -94,37 +94,66 @@ public class UserDisplay {
     JButton returnButton;
     /* The Action Listener that takes the user to the graph of the game results */
     ResultsScreenHandler resultsScreenHandler = new ResultsScreenHandler();
+    /* The JFrame for the game results (graph) */
     JFrame gameFrame;
+    /* The iamge of the graph */
     ImageIcon image2;
+    /* The label for the graph image */
     JLabel imageLab2;
+    /* The panel for the graph image */
     JPanel gamePanel;
+    /* The panel for the user's 4th choice (seeing whether or not one tribute killed another) */
     JPanel choice4Panel;
+    /* The button for the user's 4th choice */
     JButton choice4;
+    /* The Action Listener that takes the user back to the title screen */
     HomeScreenHandler homeScreenHandler = new HomeScreenHandler();
+    /* The panel for the user's 5th choice (returning to title screen) */
     JPanel choice5Panel;
+    /* The button for the 5th choice */
     JButton choice5;
+    /* The JFrame for the screen asking the user to type in two tributes' names */
     JFrame connectFrame;
+    /* The panel asking the user to type in the tributes' names */
     JPanel connectPanel;
+    /* The label asking the user to type in the tributes' names */
     JLabel connect;
+    /* The text area where the user can type in the first tribute (killer) */
     JTextArea person1;
+    /* The text area where the user can type in the second tribute */
     JTextArea person2;
+    /* The panel for the enter button after the user types in both tributes' names */
     JPanel enterPanel2;
+    /* The label for the enter button */
     JButton enterButton2;
+    /* The Action Listener that takes the user to the connection between tributes screen */
     TributeConnectionScreenHandler tributeConnectionScreenHandler = new TributeConnectionScreenHandler();
+    /* The Action Listener that takes the user to the screen that shows the connection between those tributes */
     ConnectionResultsScreenHandler connectionResultsScreenHandler = new ConnectionResultsScreenHandler();
+    /* The JFrame for the results of the connection between two specified tributes */
     JFrame connectResultFrame;
+    /* The JPanel for the result of the connection between two specified tributes */
     JPanel connectResultPanel;
+    /* The label stating the results of the connection between the two specified tributes */
     JLabel connectResultLabel;
+    /* The panel for the return button that brings the user back to the screen to type in two new names */
     JPanel returnPanel2;
+    /* The return button to bring the user back to the screen to type in two new names */
     JButton returnButton2;
     
     
 
-
+/**
+ * Main method that runs creates a new User Display and creates the graphics
+ * @param args  The arguments in the method
+ */
     public static void main(String[] args){
         new UserDisplay();
     }
 
+    /**
+     * Constructor for the UserDisPlay class that sets up the title screen
+     */
     public UserDisplay(){
         //creates new JFrame 
         window = new JFrame();
@@ -193,6 +222,9 @@ public class UserDisplay {
 
     }
 
+    /**
+     * Creates and sets up the "game screen" that allows the player to choose what they want to do next
+     */
     public void createGameScreen(){
 
         //makes the title screen's panels invisible (without this the title screen will block the game screen so you can't see it)
@@ -296,6 +328,9 @@ public class UserDisplay {
 
     }
 
+    /**
+     * Class for the Action Listener that takes the user to the screen where they can choose two tributes and view their connection
+     */
     public class TributeConnectionScreenHandler implements ActionListener{
        
         @Override
@@ -305,7 +340,9 @@ public class UserDisplay {
 
     }
 
-
+    /**
+     * Class for the Action Listener that takes the user to the title screen
+     */
     public class HomeScreenHandler implements ActionListener{
 
         @Override
@@ -314,6 +351,9 @@ public class UserDisplay {
         }
     }
 
+    /**
+     * Class for the Action Listener that takes the user to the screen where they can type in a tribute and view their kill count
+     */
     public class KillScreenHandler implements ActionListener{
 
         public void actionPerformed(ActionEvent event){
@@ -321,6 +361,9 @@ public class UserDisplay {
         }
     }
 
+    /**
+     * Class for the Action Listener that takes the user to the screen showing the tributes' training scores
+     */
     public class GameScreenHandler implements ActionListener{
 
         public void actionPerformed(ActionEvent event){
@@ -328,6 +371,9 @@ public class UserDisplay {
         }
     }
 
+    /**
+     * Class for the Action Listener that takes the user to the main game screen where they can choose what to do next
+     */
     public class TitleScreenHandler implements ActionListener{
     
         public void actionPerformed(ActionEvent event){
@@ -335,6 +381,9 @@ public class UserDisplay {
         }
     }
 
+    /**
+     * Class for the Action Listener that takes the user to the screen showing their selected tribute's kill count
+     */
     public class ChosenTributeScreenHandler implements ActionListener{
 
         @Override
@@ -343,6 +392,9 @@ public class UserDisplay {
         }
     }
 
+    /**
+     * Class for the Action Listener that takes the user to the screen showing the results of the game (graph)
+     */
     public class ResultsScreenHandler implements ActionListener{
 
         @Override
@@ -351,6 +403,9 @@ public class UserDisplay {
         }
     }
 
+    /**
+     * Class for the Action Listener that takes the user to the screen showing the connection between their chosen tributes
+     */
     public class ConnectionResultsScreenHandler implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e){
@@ -358,6 +413,9 @@ public class UserDisplay {
         }
     }
 
+    /**
+     * Allows the user to type in two tributes' names to assess the connection between them
+     */
     public void connections(){
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
@@ -428,6 +486,9 @@ public class UserDisplay {
 
     }
 
+    /**
+     * Shows the user the connection between their two chosen tributes
+     */
     public void connectionResults(){
         connectPanel.setVisible(false);
         person1.setVisible(false);
@@ -476,6 +537,9 @@ public class UserDisplay {
 
     }
 
+    /**
+     * Shows the user the results of the game (graph created from Main.java)
+     */
     public void gameResults(){
         //makes the title screen's panels invisible (without this the title screen will block the game screen so you can't see it)
         titlePanel.setVisible(false);
@@ -540,6 +604,9 @@ public class UserDisplay {
     }
 
 
+    /**
+     * Shows the user how many kills their chosen tribute has
+     */
     public void userResults(){
         killPanel.setVisible(false);
         enterPanel.setVisible(false);
@@ -583,6 +650,9 @@ public class UserDisplay {
         resultFrame.add(returnPanel);
     }
 
+    /**
+     * Shows the user the tributes' training scores
+     */
     public void tributeScores() {
         //makes the title screen's panels invisible (without this the title screen will block the game screen so you can't see it)
         titlePanel.setVisible(false);
@@ -645,6 +715,9 @@ public class UserDisplay {
         
     }
 
+    /**
+     * Allows the user to type in a tribute's name to view their kill count
+     */
     public void killCount(){
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
