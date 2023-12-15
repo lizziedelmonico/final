@@ -1,0 +1,4 @@
+To run the program, click "Run" while on UserDisplay.java class. From there, you will find the title screen, as shown in the screenshot.png 
+file. For the best graphics, put the output on full screen mode. While typing in tributes' names, capitalize the first letter and leave the
+rest undercase. After you've typed in the names, click enter to get the results. If you cannot think of any tributes' names, you can look at
+the game results for some examples!

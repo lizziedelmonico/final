@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 
-
+/* Creates a graph based on the file provided and calculates various things from that graph */
 class Main{
 
 

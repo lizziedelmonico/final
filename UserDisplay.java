@@ -13,6 +13,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Toolkit;
 
+/* Creates the display for the user to move through the program with */
 public class UserDisplay {
     /* JFrame for the title screen */
     JFrame window;
